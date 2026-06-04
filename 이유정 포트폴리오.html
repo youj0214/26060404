@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>이유정 · 마케터 포트폴리오</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root {
+    --bg: #0F0F0E;
+    --surface: #1A1916;
+    --surface-2: #221F1B;
+    --ink: #F2F0EB;
+    --ink-soft: #9E9B92;
+    --ink-faint: #6B685F;
+    --line: #2C2A26;
+    --line-strong: #3D3A34;
+    --accent: #FF6A2B;
+    --accent-soft: rgba(255, 106, 43, 0.13);
+    --maxw: 1080px;
+    --font: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection { background: var(--accent); color: #0F0F0E; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(15, 15, 14, 0.82);
+    backdrop-filter: saturate(150%) blur(12px);
+    -webkit-backdrop-filter: saturate(150%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .nav-brand .en {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .nav-menu { display: flex; gap: 4px; }
+  .nav-menu a {
+    position: relative;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: color 0.2s ease, background 0.2s ease;
+    text-transform: uppercase;
+  }
+  .nav-menu a:hover { color: var(--ink); background: var(--surface); }
+  .nav-menu a.active { color: var(--accent); }
+  .nav-menu a.active::after {
+    content: "";
+    position: absolute;
+    left: 14px; right: 14px; bottom: 2px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 120px 0 96px; }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(56px, 9vw, 104px);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    margin-bottom: 14px;
+  }
+  .hero .name-en {
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .hero .tagline {
+    font-size: clamp(21px, 2.8vw, 30px);
+    font-weight: 600;
+    line-height: 1.45;
+    max-width: 780px;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  .hero .tagline .x { color: var(--accent); font-weight: 700; }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    margin-top: 44px;
+  }
+  .meta-chip {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 16px;
+  }
+
+  /* ---------- SECTION ---------- */
+  section.block { padding: 80px 0; border-top: 1px solid var(--line); }
+  .sec-head { margin-bottom: 52px; }
+  .sec-num {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .sec-title {
+    font-size: clamp(30px, 4.5vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  /* highlight */
+  .hl { color: var(--accent); font-weight: 700; }
+
+  /* ---------- OVERVIEW ---------- */
+  .overview-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .ov-item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 26px 30px;
+  }
+  .ov-idx {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    font-feature-settings: "tnum";
+    display: block;
+    margin-bottom: 18px;
+  }
+  .ov-key {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .ov-tail {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    padding: 52px 0;
+    border-top: 1px solid var(--line);
+  }
+  .exp-item:first-child { border-top: none; padding-top: 0; }
+  .exp-meta .role-tag {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 6px;
+    padding: 5px 10px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .exp-meta h3 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .exp-meta .role-en {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+    letter-spacing: 0.01em;
+  }
+  .exp-meta .period {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    font-feature-settings: "tnum";
+  }
+  .exp-headline {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 22px;
+    margin-bottom: 30px;
+    text-wrap: pretty;
+  }
+  .exp-headline .arr { color: var(--accent); font-weight: 800; }
+  .detail-group { margin-bottom: 26px; }
+  .detail-group:last-child { margin-bottom: 0; }
+  .detail-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+  .detail-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .detail-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .detail-list li::before {
+    content: "";
+    position: absolute;
+    left: 2px; top: 9px;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--line-strong);
+  }
+  .detail-list.takeaway li::before { background: var(--accent); }
+  .detail-list li .lead { font-weight: 700; color: var(--accent); }
+
+  /* ---------- PROJECT FEATURED ---------- */
+  .feature {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 44px;
+    margin-bottom: 28px;
+  }
+  .feature-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #0F0F0E;
+    background: var(--accent);
+    border-radius: 5px;
+    padding: 4px 9px;
+    display: inline-block;
+  }
+  .feature h3 {
+    font-size: clamp(24px, 3.2vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin: 16px 0 6px;
+  }
+  .feature .feature-sub { font-size: 14px; color: var(--ink-soft); margin-bottom: 30px; }
+  .feature-video { margin-top: 30px; }
+  .feature-video video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border-radius: 12px;
+    background: #000;
+    border: 1px solid var(--line-strong);
+  }
+  .feature-video figcaption {
+    margin-top: 13px;
+    font-size: 13px;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+  .feature-video figcaption b { color: var(--accent); font-weight: 700; }
+
+  .ps-row {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line-strong);
+    align-items: baseline;
+  }
+  .ps-row .ps-key {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+  }
+  .ps-row .ps-val { font-size: 16px; line-height: 1.55; color: var(--ink); text-wrap: pretty; }
+  .ps-val b { color: var(--ink); font-weight: 700; }
+  .ps-val .mut { color: var(--ink-soft); }
+
+  /* metrics */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding-top: 20px;
+    margin-top: 6px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .metric {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 20px;
+  }
+  .metric .big {
+    font-size: clamp(30px, 4.4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    line-height: 1;
+    font-feature-settings: "tnum";
+  }
+  .metric .lbl {
+    margin-top: 12px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  /* ---------- DASHBOARD CARDS ---------- */
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 44px -22px rgba(255, 106, 43, 0.5);
+  }
+  .thumb-shot {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .thumb-shot img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.5s ease;
+  }
+  .thumb-shot img.loaded { opacity: 1; }
+  .card:hover .thumb-shot img.loaded { transform: scale(1.035); }
+  .thumb-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+  }
+  .card-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 18px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line-strong); }
+  .card-url {
+    margin-left: 8px;
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-feature-settings: "tnum";
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .card-body { padding: 26px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+  .card-kind {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .card h4 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .card p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; flex: 1; text-wrap: pretty; }
+  .card-link {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-link .arr { transition: transform 0.25s ease; }
+  .card:hover .card-link .arr { transform: translateX(4px); }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid { display: flex; flex-direction: column; }
+  .skill-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .skill-row:first-child { border-top: none; padding-top: 0; }
+  .skill-key {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .skill-key .sk-en {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 4px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 9px 15px;
+  }
+  .edu-line { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+
+  /* ---------- FOOTER ---------- */
+  footer { border-top: 1px solid var(--line); padding: 44px 0 60px; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px; }
+  .foot-name { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .foot-meta { font-size: 13px; color: var(--ink-faint); letter-spacing: 0.04em; }
+
+  /* ---------- ENTRANCE ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  html.show-now .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 820px) {
+    .wrap, .nav-inner { padding-left: 24px; padding-right: 24px; }
+    .nav-menu { gap: 0; }
+    .nav-menu a { padding: 8px 9px; font-size: 12px; letter-spacing: 0.03em; }
+    .nav-brand .en { display: none; }
+    .hero { padding: 72px 0 64px; }
+    .overview-list { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
+    .skill-row { grid-template-columns: 1fr; gap: 16px; }
+    .feature { padding: 28px 22px; }
+    .metrics { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .wrap, .nav-inner { padding-left: 18px; padding-right: 18px; }
+    .ps-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-brand">이유정<span class="en">Yujeong Lee</span></a>
+      <div class="nav-menu" id="navMenu">
+        <a href="#overview">Overview</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- HERO -->
+    <header class="hero wrap" data-screen-label="Hero">
+      <p class="eyebrow reveal">Marketer · Portfolio</p>
+      <h1 class="reveal">이유정</h1>
+      <p class="name-en reveal">Yujeong Lee</p>
+      <p class="tagline reveal">부동산 도메인 지식 <span class="x">×</span> 데이터 분석으로<br />자산의 가치를 극대화하는 마케터</p>
+      <div class="meta-row reveal">
+        <span class="meta-chip">2000년생</span>
+        <span class="meta-chip">부동산학 · 경영학 학사</span>
+        <span class="meta-chip">교직원 2년</span>
+        <span class="meta-chip">부동산 컨설팅 1년 6개월</span>
+      </div>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section class="block" id="overview" data-screen-label="Overview">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-num">01 — OVERVIEW</span>
+          <h2 class="sec-title">시장을 읽고, 데이터로 증명한다</h2>
+        </div>
+        <div class="overview-list">
+          <div class="ov-item reveal">
+            <span class="ov-idx">A</span>
+            <p class="ov-key">도메인 분석력</p>
+            <p class="ov-tail">부동산 · 경영 기반 핵심 USP 도출</p>
+          </div>
+          <div class="ov-item reveal">
+            <span class="ov-idx">B</span>
+            <p class="ov-key">데이터 콘텐츠</p>
+            <p class="ov-tail">블로그 조회수 <span class="hl">1,000% ↑</span> 견인</p>
+          </div>
+          <div class="ov-item reveal">
+            <span class="ov-idx">C</span>
+            <p class="ov-key">예산 · 커뮤니케이션</p>
+            <p class="ov-tail">광고비 관리 + 까다로운 광고주 설득</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="block" id="experience" data-screen-label="Experience">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-num">02 — EXPERIENCE</span>
+          <h2 class="sec-title">경력</h2>
+        </div>
+
+        <!-- Exp 1 -->
+        <div class="exp-item reveal">
+          <div class="exp-meta">
+            <span class="role-tag">Asset Mgmt &amp; Marketing</span>
+            <h3>부동산 컨설팅 회사</h3>
+            <p class="role-en">자산 분석 · 브랜드 마케팅</p>
+            <p class="period">2024.09 – 2025.12 · 1년 6개월</p>
+          </div>
+          <div class="exp-detail">
+            <p class="exp-headline">자산 분석 <span class="arr">×</span> 마케팅 <span class="arr">→</span> 진성 투자 고객 유입 채널 구축</p>
+            <div class="detail-group">
+              <p class="detail-label">주요 업무</p>
+              <ul class="detail-list">
+                <li>비주거용 부동산 실거래가 분석 &amp; DB 구축</li>
+                <li>블로그 마케팅 &amp; 카드뉴스 제작</li>
+                <li>건물 관리 행정 프로세스 리딩</li>
+              </ul>
+            </div>
+            <div class="detail-group">
+              <p class="detail-label">Takeaway</p>
+              <ul class="detail-list takeaway">
+                <li>시장 분석력 — 실거래가 분석 → 블로그 마케팅</li>
+                <li>도메인 지식 — 임대수익률 · 공실 리스크 이해</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exp 2 -->
+        <div class="exp-item reveal">
+          <div class="exp-meta">
+            <span class="role-tag">Administration &amp; Budgeting</span>
+            <h3>대학교 교직원</h3>
+            <p class="role-en">학사 행정 · 예산 관리</p>
+            <p class="period">2022.09 – 2024.08 · 2년</p>
+          </div>
+          <div class="exp-detail">
+            <p class="exp-headline">리스크 관리 <span class="arr">×</span> 다각도 커뮤니케이션</p>
+            <div class="detail-group">
+              <p class="detail-label">주요 업무</p>
+              <ul class="detail-list">
+                <li>학사 행정 총괄 · 수업 데이터 정형화 · 학생 지도</li>
+                <li>학과 연간 예산 수립 · 집행 · 국고 정산</li>
+              </ul>
+            </div>
+            <div class="detail-group">
+              <p class="detail-label">Takeaway</p>
+              <ul class="detail-list takeaway">
+                <li>학과 행정 총괄 — 꼼꼼한 행정</li>
+                <li>프로젝트 매니징(AE) — 이해관계 조율</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="block" id="projects" data-screen-label="Projects">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-num">03 — PROJECTS</span>
+          <h2 class="sec-title">프로젝트</h2>
+        </div>
+
+        <!-- Featured -->
+        <article class="feature reveal">
+          <span class="feature-badge">Key Project</span>
+          <h3>꼬마빌딩 브랜드 블로그 활성화</h3>
+          <p class="feature-sub">부동산 컨설팅 재직 · 개인 기여도 100%</p>
+
+          <div class="ps-row">
+            <div class="ps-key">목표</div>
+            <div class="ps-val">고관여 투자 타겟의 진성 유입 채널 확보</div>
+          </div>
+          <div class="ps-row">
+            <div class="ps-key">역할</div>
+            <div class="ps-val">데이터 분석 · 콘텐츠 기획 · 네이버 블로그 SEO</div>
+          </div>
+          <div class="ps-row">
+            <div class="ps-key">문제</div>
+            <div class="ps-val"><span class="mut">매물 홍보형 콘텐츠 → 낮은 신뢰도 · 미비한 전환율</span></div>
+          </div>
+          <div class="ps-row">
+            <div class="ps-key">전략</div>
+            <div class="ps-val"><b>실거래가 데이터 분석 리포트</b>로 전환 · 지역별 세부 키워드 공략 <span class="mut">(C-Rank · DIA)</span></div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <div class="big">1,000% ↑</div>
+              <p class="lbl">평균 조회수 300~400회 → 4,000회</p>
+            </div>
+            <div class="metric">
+              <div class="big">상위 노출</div>
+              <p class="lbl">고관여 키워드 다수 View · 블로그 탭 선점</p>
+            </div>
+            <div class="metric">
+              <div class="big">DB 유입</div>
+              <p class="lbl">콘텐츠 → 컨설팅 문의 연계로 잠재 고객 확보</p>
+            </div>
+          </div>
+
+          <figure class="feature-video">
+            <video src="uploads/final-37c1bf02.mp4#t=0.5" controls muted playsinline preload="metadata"></video>
+            <figcaption><b>프로젝트 산출물</b> — 데이터 분석 기반 콘텐츠 영상</figcaption>
+          </figure>
+        </article>
+
+        <!-- Dashboard cards -->
+        <div class="cards">
+          <a class="card reveal" href="https://cheongyak-dashboard-15cu.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <div class="card-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="card-url">cheongyak-dashboard.vercel.app</span>
+            </div>
+            <div class="thumb-shot">
+              <span class="thumb-fallback">미리보기 불러오는 중…</span>
+              <img loading="lazy" alt="청약 대시보드 미리보기" src="assets/thumb-cheongyak.png" onload="this.classList.add('loaded')" />
+            </div>
+            <div class="card-body">
+              <p class="card-kind">Data Dashboard</p>
+              <h4>청약 대시보드</h4>
+              <p>청약 데이터 시각화 · 데이터 가공 역량을 보여주는 사이드 프로젝트</p>
+              <span class="card-link">사이트 방문 <span class="arr">→</span></span>
+            </div>
+          </a>
+          <a class="card reveal" href="https://mail-dashboard-snbi.vercel.app/dashboard" target="_blank" rel="noopener noreferrer">
+            <div class="card-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="card-url">mail-dashboard.vercel.app</span>
+            </div>
+            <div class="thumb-shot">
+              <span class="thumb-fallback">미리보기 불러오는 중…</span>
+              <img loading="lazy" alt="메일 대시보드 미리보기" src="assets/thumb-mail.png" onload="this.classList.add('loaded')" />
+            </div>
+            <div class="card-body">
+              <p class="card-kind">Data Dashboard</p>
+              <h4>메일 대시보드</h4>
+              <p>메일 · 마케팅 성과 지표 모니터링 대시보드</p>
+              <span class="card-link">사이트 방문 <span class="arr">→</span></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="block" id="skills" data-screen-label="Skills">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-num">04 — SKILLS &amp; EDUCATION</span>
+          <h2 class="sec-title">역량 &amp; 학력</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-row reveal">
+            <div class="skill-key">학력<span class="sk-en">Education</span></div>
+            <p class="edu-line" style="font-size: 17px">학사 (부동산학 &amp; 경영학)</p>
+          </div>
+          <div class="skill-row reveal">
+            <div class="skill-key">핵심 역량<span class="sk-en">Capabilities</span></div>
+            <div class="chips">
+              <span class="chip">부동산 시장 · 입지 분석</span>
+              <span class="chip">네이버 블로그 SEO</span>
+              <span class="chip">카피라이팅</span>
+              <span class="chip">데이터 기반 타겟팅 기획</span>
+              <span class="chip">커뮤니케이션</span>
+            </div>
+          </div>
+          <div class="skill-row reveal">
+            <div class="skill-key">툴<span class="sk-en">Tools</span></div>
+            <div class="chips">
+              <span class="chip">Naver Analytics</span>
+              <span class="chip">
+</span>
+              <span class="chip">Excel</span>
+              <span class="chip">
+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-inner">
+      <span class="foot-name">이유정 · Yujeong Lee</span>
+      <span class="foot-meta">Marketer Portfolio · 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-spy: highlight active nav link
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('#navMenu a'));
+      var map = {};
+      links.forEach(function (a) {
+        var id = a.getAttribute('href').slice(1);
+        var sec = document.getElementById(id);
+        if (sec) map[id] = a;
+      });
+      var sections = Object.keys(map).map(function (id) { return document.getElementById(id); });
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            links.forEach(function (l) { l.classList.remove('active'); });
+            var a = map[e.target.id];
+            if (a) a.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      sections.forEach(function (s) { spy.observe(s); });
+    })();
+
+    // Entrance reveal (+ throttle guard for offscreen/paused contexts)
+    (function () {
+      var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !('IntersectionObserver' in window)) {
+        document.documentElement.classList.add('show-now');
+        return;
+      }
+      function revealVisible() {
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        els.forEach(function (el) {
+          if (el.classList.contains('in')) return;
+          var r = el.getBoundingClientRect();
+          if (r.top < vh * 0.92 && r.bottom > 0) el.classList.add('in');
+        });
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+      requestAnimationFrame(revealVisible);
+      window.addEventListener('scroll', revealVisible, { passive: true });
+
+      var ticked = false;
+      requestAnimationFrame(function () { ticked = true; });
+      setTimeout(function () {
+        if (!ticked) document.documentElement.classList.add('show-now');
+      }, 1200);
+    })();
+  </script>
+
+</body>
+</html>
